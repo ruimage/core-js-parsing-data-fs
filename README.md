@@ -64,9 +64,6 @@ PersonWriter.write('friends.csv', [jane, john])
 Мы научились парсить данные из CSV в js-объекты, и теперь мы можем использовать их в наших программах. Теперь мы будем работать с объектами js и сохранить данные о них в CSV-файле. Для этого мы создадим модуль с классом `PeopleWriter` с методом `.write`. Мы можем создать массив объектов `People`, а затем записать их в файл. (см. Рисунок 1)
 
 
-*Примечание:* Когда мы читаем и записываем файл, мы можем выбрать режим (например, `"r"` для чтения и `"w"` для записи). Режимы CSV такие же, как [режимы, доступные для файла] [режимы файла js].
-
-
 ### Release 5: Сбор и сохранение информации (Опционально)
 Теперь, когда мы можем записать данные в CSV, давайте напишем скрипт, который позволит нам создать адресную книгу CSV на основе пользовательского ввода. Мы вводим имена людей, номера телефонов и т.д., а затем сохраняем данные в файл CSV. Давайте напишем такой файл `runner.js`, чтобы при его запуске нам предлагалось ввести информацию. Мы вводим данные как можно большего количества людей. И затем, как только мы закончим делать записи, данные, которые мы ввели, будут записаны в файл CSV.
 
@@ -77,7 +74,6 @@ PersonWriter.write('friends.csv', [jane, john])
 
 [Date]: https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Date
 [Date.parse()]: https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Date/parse
-[режимы файла js]: https://kuroikaze85.wordpress.com/2010/03/19/read-and-write-files-nodejs/
 [wikipedia csv]: https://en.wikipedia.org/wiki/Comma-separated_values
 [wikipedia lazy initialization]: https://en.wikipedia.org/wiki/Lazy_initialization
 [wikipedia memoization]: https://en.wikipedia.org/wiki/Memoization
