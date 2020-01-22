@@ -3,5 +3,3 @@ class Person{
   // what attributes should a Person object have?
 }
 
-
-module.exports = Person;
