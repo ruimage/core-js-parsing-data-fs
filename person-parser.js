@@ -4,3 +4,5 @@ class PersonParser {
     // based on the data in the csv file.
   }
 }
+
+module.exports = { PersonParser };

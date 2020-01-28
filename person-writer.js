@@ -4,3 +4,5 @@ class PersonWriter {
     // to the specified file.
   }
 }
+
+module.exports = { PersonWriter };

@@ -1,3 +1,3 @@
-const personParser = require('../person_parser.js');
+const { personParser } = require('../person_parser.js');
 
 // PersonParser

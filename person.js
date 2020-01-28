@@ -1,5 +1,6 @@
-class Person{
+class Person {
   // Looking at the people.csv file,
   // what attributes should a Person object have?
 }
 
+module.exports = { Person };
