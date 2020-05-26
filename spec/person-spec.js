@@ -1,3 +1,3 @@
-const person = require('../person.js');
+const Person = require('../person.js');
 
 // Person
