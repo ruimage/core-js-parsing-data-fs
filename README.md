@@ -1,28 +1,27 @@
-# Парсинг данных: из CSV в JS в CSV
+# Data parsing: CSV into JS and back into CSV
 
-## Введение
+## Introduction
 
-Когда ты запускаешь свои приложения, создаются объекты JS, которые хранятся в памяти твоего компьютера. Состояние «нахождения в памяти» теряется, когда приложение заканчивает работу, поэтому, если хочешь сохранить информацию из приложения, то нужно записать её где-нибудь.
+When you run your applications, JS objects are created and stored in memory on your computer. The "in-memory" state is lost when the application finishes running, so if you want to save information from the application, you need to write it down somewhere.
 
-В дополнение к сохранению информации из своих программ для себя, ты иногда хочешь поделиться этой информацией с другими системами или программами. Для этого, помимо простого сохранения данных, нужно сохранить их в формате, который совместим с этими другими системами, и который легко переносится.
+In addition to saving information from your applications for your needs, you sometimes have to share that information with other systems or programs. To do that, except just saving the data, you need to save it in a format that is compatible with those other systems, and that is easily portable.
 
-Существует общий подход к сохранению информации в различных форматах - это преобразование информации в текст. XML, JSON, CSV и YAML - все это примеры текстовых форматов для обмена данными. Рекомендуем ознакомиться со всеми перечисленными форматами, они пригодятся тебе в будущем.
-
-В этой задаче ты будешь использовать [CSV][wikipedia csv] в качестве формата для хранения данных. Ты будешь представлять людей в JS в качестве экземпляров класса `Person`. То есть ты вытащишь данные из CSV-файла, а затем создашь по объекту `Person`  на основе каждой строки данных из файла. Ну и в конце концов, сохранишь объекты класса `Person` в новый CSV-файл.
+A common approach to saving information in different formats is to convert the information to text. XML, JSON, CSV and YAML are all examples of text formats for data exchange. We recommend that you familiarize yourself with all of these formats, they will be useful to you in the future.
+In this task you are going to use [CSV][wikipedia csv] as a format for storing data. You have to represent people in JS as instances of the class `Person`. That means, you have to pull the data from the CSV file, and then create a `Person` object based on each row of data from the file. And finally, you need to save the objects related to the class `Person` into a new CSV file.
 
 
 ## Releases
-### Release 0. Люди как объекты JS
-Начни с создания класса `Person`. Твой класс должен быть предназначен для представления данных, найденных в файле `people.csv`. Другими словами, экземпляр класса `Person` должен иметь имя, фамилию и т. д.
+### Release 0. People as JS objects
+Start by creating the class `Person`. Your class should be designed to represent the data found in `people.csv` file. In other words, an instance of `Person` class must have a name, surname, etc.
 
-Тебе надо написать тесты для проверки правильности функционирования класса `Person`.
+You need to write tests to make sure the `Person` class functions correctly.
 
 
 ### Release 1. Парсинг из CSV в JS
 
-Теперь есть класс, предназначенный для представления человека. Чтобы создать объект `Person`, тебе нужно предоставить некоторые данные: имя, фамилию и т.д. Для создания объекта не имеет значения, откуда берутся эти данные. Данные могут предоставляться через пользовательский интерфейс, который может быть на веб-странице. Но в этой задаче данные поступают из файла CSV.
+Now we have a class designed to represent a person. To create a Person object, you need to provide some data: first name, last name, etc. It doesn't matter where the data comes from to create the object. The data can be provided through a user interface, which might be on a web page. But in this task, the data comes from a CSV file.
 
-Теперь напиши класс `PerfectParser`, ответственный за анализ текста в файле и формирование объектов `Person` из его данных. Напиши метод `.parse()`. Этот метод должен преобразовывать каждую строку из csv-файла в объект класса `Person`  и возвращать массив из этих объектов.
+Now write a `PerfectParser` class responsible for parsing the text in the file and generating `Person` objects from its data. Implement a method `.parse()`. This method should convert each line from the csv file into an object of Person class and return an array of these objects.
 
 ```js
 const parser = new PerfectParser();
@@ -33,21 +32,20 @@ console.log(people[0] instanceof Person);
 // => true
 
 ```
-*Рисунок 1*. Вызов метода `parse`, который возвращает массив объектов `Person` на основе данных из CSV-файла.
+*Figure 1*. A call of method `parse`, which returns an array of `Person` objects based on data from the CSV file.
 
 
-### Release 2. Соответствующие типы данных в JS
-В твоём CSV-файле все представлено в текстовом формате. Это означает, что вся информация из файла приходит в программу в виде строки. Иногда это уместно. Названия, номера телефонов и адреса электронной почты легко представляются в виде строк. В других случаях может оказаться полезным привести текст CSV более подходящему типу.
+### Release 2. Corresponding data types in JS
+In your CSV file, information is stored in text format. This means that all the information from the file comes into the program as a string. Sometimes this is correct. Names, phone numbers, and email addresses are easily represented as strings. In other cases, it may be useful to transform the CSV text into more appropriate type.
 
-В `people.csv` дата и время рождения человека сохранены в поле `bornAt`. В CSV-файле это строка в формате `YYYY-MM-DD HH:MM:SS`. Эта строка представляет дату и время, js в свою очередь предоставляет нам такой инструмент, как [Date][], специально созданный для представления даты и времени.
+In `people.csv` the date and time a person was born is saved in the field `bornAt`. In CSV file, this is a string in format `YYYYY-MM-DD HH:MM:SS`. This string represents date and time, but JS provides us with such a tool like [Date][Date], specifically created to represent the date and time.
 
-Когда ты создаешь объекты `Person`  из CSV-файла, то приводи свойство `bornAt` к "типу" `Date`. Также, возможно тебе понадобится метод [Date.parse()][] или другие методы, связанные с [Date][].
+When you create `Person` objects from a CSV file, make the `bornAt` property the `Date` "type". Also, you may need the [Date.parse()][Date.parse()] method or other methods related to [Date][Date].
 
+### Release 3. Saving information from JS to CSV
 
-### Release 3. Сохранение информации из JS в CSV
-
->**JavaScript's npm-модули.**
-Ты можешь воспользоваться библиотекой (npm-модулем, например: `json2csv`) для того, чтобы записать js объекты в csv. Этот подход будет проще и, возможно, в некоторых случаях правильнее. Однако ты должен понимать как решить данную задачу и без сторонних npm-модулей. `const json2csv = require('json2csv').parse;`
+>**JavaScript's npm modules**
+You can use a library (for example, an npm module `json2csv`) to write js objects to csv. This approach is easier and maybe more correct in some cases. However, you should understand how to solve this problem without third-party npm modules. `const json2csv = require('json2csv').parse;`
 
 
 ```js
@@ -57,15 +55,17 @@ let john = new Person(...)
 PerfectParser.write('friends.csv', [jane, john])
 ```
 
-*Рисунок 2*. Создание людей в js и сохранение данных о них в CSV-файле.
+*Figure 2*. Creating people in JS and saving their data in a CSV file.
 
-Ты научился парсить данные из CSV в js, преобразовывать строчные данные к объектам, и теперь ты можешь использовать полученные данные в своих программах. Допустим, что ты получил данные из файла, поработал с ними, немного отредактировал, что-то добавил, что-то удалил, и теперь хочешь сохранить всё в новый csv-файл. Теперь тебе придется привести твой массив объектов `Person` к нужному формату (строка, csv). У тебя уже заготовлен метод `.write()` у `PerfectParser` для данного релиза. Наполни его своим прекрасным кодом!
+You have learned how to parse data from CSV to js, convert string data to objects, and now you can use this data in your programs. Suppose you have got the data from the file, worked with it, edited it a bit, added something, deleted something, and now you would like to save everything to a new csv-file. Now you have to convert your array of `Person` objects to the right format (string, csv). You already have the method `.write()` of `PerfectParser` prepared for this release. Fill it up with your beautiful code!
 
-## Заключение
-Общая цель этой задачи - научиться манипулировать объектами js и CSV как частью одного приложения. Все данные, которые нужны для представления людей, были сохранены в CSV-файле, но CSV-файл был просто текстовым. Создав объекты js на основе данных, мы смогли создать объекты, поведение которых соответствовало потребностям нашего приложения. Это общая схема разработки программного обеспечения: нужно изменить представление данных из формата A в формат B, чтобы упростить работу с X.
+## Conclusion.
+The overall goal of this task is to learn how to manipulate js and CSV objects as a part of the same application. All of the data needed to represent people was stored in a CSV file, but the CSV file was just a text file. By creating js objects based on the data, we were able to create objects whose behavior matched the needs of our application. This is a common software development scheme: we need to change the representation of data from format A to format B in order to make it easier to work with X.
 
-[Date]: https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Date
-[Date.parse()]: https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Date/parse
+
+Translated with www.DeepL.com/Translator (free version)
+[Date]: https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Date
+[Date.parse()]: https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Date/parse
 [wikipedia csv]: https://en.wikipedia.org/wiki/Comma-separated_values
 [wikipedia lazy initialization]: https://en.wikipedia.org/wiki/Lazy_initialization
 [wikipedia memoization]: https://en.wikipedia.org/wiki/Memoization
